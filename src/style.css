@@ -1,0 +1,75 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+}
+
+body {
+  height: 95vh;
+}
+
+select {
+  width: 50%;
+  color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  font-size: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 6px;
+}
+
+input {
+  width: 50%;
+  color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 6px;
+  font-size: 20px;
+}
+
+.main-heading {
+  font-size: 60px;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 20px;
+}
+
+.form-container {
+  /*   border: 1px solid black; */
+  width: 60%;
+  height: 70%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form {
+  /* border: 1px solid orange; */
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+#buttonDownload {
+  width: 40%;
+  height: 30%;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #d2d2d2;
+  font-size: 42px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s;
+}
+#buttonDownload:hover {
+  background-color: rgb(64, 147, 153);
+  color: white;
+}
+
+.label {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+  margin-right: 100px;
+}
+
+.form-chunk {
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+}

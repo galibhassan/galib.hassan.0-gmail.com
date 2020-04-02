@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power grid data</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div class="main-heading">Power Grid Data</div>
+
+    <div class="form-container">
+      <div class="form">
+        <div class="form-chunk">
+          <div class="label ">Region</div>
+          <select id="regions">
+            <option value="World">World</option>
+            <option value="Europe">Europe</option>
+            <option value="Germany">Germany</option>
+          </select>
+        </div>
+
+        <div class="form-chunk">
+          <div class="label">From</div>
+          <input type="date" required />
+        </div>
+
+        <div class="form-chunk">
+          <div class="label">To</div>
+          <input type="date" required />
+        </div>
+      </div>
+      <button id="buttonDownload">Download</button>
+    </div>
+  </body>
+</html>
