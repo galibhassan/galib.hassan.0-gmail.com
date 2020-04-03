@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Power grid data</title>
-    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/styling/style.css" />
   </head>
   <body>
     <div class="main-heading">Power Grid Data</div>
@@ -13,7 +13,7 @@
       <div class="form">
         <div class="form-chunk">
           <div class="label ">Region</div>
-          <select id="regions">
+          <select id="regionInput">
             <option value="World">World</option>
             <option value="Europe">Europe</option>
             <option value="Germany">Germany</option>
@@ -22,15 +22,20 @@
 
         <div class="form-chunk">
           <div class="label">From</div>
-          <input type="date" required />
+          <input id="startDateInput" type="date" required />
         </div>
 
         <div class="form-chunk">
           <div class="label">To</div>
-          <input type="date" required />
+          <input id="endDateInput" type="date" required />
         </div>
       </div>
-      <button id="buttonDownload">Download</button>
+      <button id="buttonDownload">Get download link</button>
     </div>
+    <div id="notificationDiv">Download link or errors will appear here</div>
+
+    <script src="./sampleData.js"></script>
+    <script src="./src/utils.js"></script>
+    <script src="./src/index.js"></script>
   </body>
 </html>
