@@ -14,18 +14,24 @@ function parseDate(dateString) {
 
 /**
  *
+ * @param {String} region region selected by the user
  * @param {String} startingDate starting date from user input
+ * @param {String} endingDate ending date from user input
  * @param {JSON} data sample data in json format (top level is an array)
  * @returns {Array} An containing the data for starting date
  */
-function getDataOfStartingDate(region, startingDate, data) {
-  const { year, month, day } = parseDate(startingDate);
+function getDataWithinGivenTime(region, startingDate, endingDate, data) {
+  const { year: startYear, month: startMonth, day: startDay } = parseDate(startingDate);
+  const { year: endYear, month: endMonth, day: endDay } = parseDate(endingDate);
   let outputArr = [];
   data.forEach(entry => {
     if (
-      entry.date.year === parseInt(year) &&
-      entry.date.month === parseInt(month) &&
-      entry.date.day === parseInt(day) &&
+      entry.date.year >= parseInt(startYear) &&
+      entry.date.year <= parseInt(endYear) &&
+      entry.date.month >= parseInt(startMonth) &&
+      entry.date.month <= parseInt(endMonth) &&
+      entry.date.day >= parseInt(startDay) &&
+      entry.date.day <= parseInt(endDay) &&
       entry.region === region
     ) {
       outputArr.push(entry);
@@ -33,4 +39,19 @@ function getDataOfStartingDate(region, startingDate, data) {
   });
 
   return outputArr;
+}
+
+/**
+ *
+ * @param {String} startDate
+ * @param {String} endDate
+ * @returns {Boolean} True if endDate occurs earlier in calender.
+ */
+function isStartDateBigger(startDate, endDate) {
+  const diff = parseInt(endDate.split("-").join("")) - parseInt(startDate.split("-").join(""));
+  if (diff < 1) {
+    return true;
+  } else {
+    return false;
+  }
 }

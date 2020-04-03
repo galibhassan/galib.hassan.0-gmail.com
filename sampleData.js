@@ -1,6 +1,5 @@
 const sampleData = [
   {
-    entry_id: 1,
     region: "World",
     date: {
       year: 2020,
@@ -12,8 +11,7 @@ const sampleData = [
     }
   },
   {
-    entry_id: 2,
-    region: "Europe",
+    region: "World",
     date: {
       year: 2020,
       month: 04,
@@ -24,7 +22,6 @@ const sampleData = [
     }
   },
   {
-    entry_id: 3,
     region: "Germany",
     date: {
       year: 2020,
@@ -36,7 +33,6 @@ const sampleData = [
     }
   },
   {
-    entry_id: 4,
     region: "Germany",
     date: {
       year: 2020,
@@ -48,7 +44,6 @@ const sampleData = [
     }
   },
   {
-    entry_id: 5,
     region: "Germany",
     date: {
       year: 2020,
@@ -57,6 +52,17 @@ const sampleData = [
     },
     data: {
       body: [0, 10000, 20000, 30000, 40000]
+    }
+  },
+  {
+    region: "Europe",
+    date: {
+      year: 2020,
+      month: 04,
+      day: 05
+    },
+    data: {
+      body: [0, 1111, 111, 11, 1]
     }
   }
 ];

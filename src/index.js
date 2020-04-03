@@ -1,4 +1,5 @@
 window.addEventListener("load", function() {
+  // grabbing UI from DOM
   const regionInput = document.getElementById("regionInput");
   const startDateInput = document.getElementById("startDateInput");
   const endDateInput = document.getElementById("endDateInput");
@@ -8,24 +9,40 @@ window.addEventListener("load", function() {
   buttonDownload.addEventListener("click", handleDownloadButton);
 
   function handleDownloadButton(e) {
+    // date validation
     if (!regionInput.value) {
       console.error("regionInput ?");
       notificationDiv.innerHTML = "regionInput?";
+      notificationDiv.style.color = "tomato";
     } else if (!startDateInput.value) {
       console.error("starting date ?");
       notificationDiv.innerHTML = "Starting date?";
       notificationDiv.style.color = "tomato";
     } else if (!endDateInput.value) {
       console.error("ending date ?");
+      notificationDiv.style.color = "tomato";
       notificationDiv.innerHTML = "Ending date?";
+    } else if (isStartDateBigger(startDateInput.value, endDateInput.value)) {
+      notificationDiv.style.color = "tomato";
+      notificationDiv.innerHTML = "Ending date cannot be earlier than the starting date!";
     } else {
-      notificationDiv.innerHTML = "";
+      // if every check passes
 
-      console.log(getDataOfStartingDate(regionInput.value, startDateInput.value, sampleData));
+      const downloadableObj = getDataWithinGivenTime(
+        regionInput.value,
+        startDateInput.value,
+        endDateInput.value,
+        sampleData
+      );
 
-      var obj = getDataOfStartingDate(regionInput.value, startDateInput.value, sampleData);
-      var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj, null, 2));
-      notificationDiv.innerHTML = `<a href="data:'${data}" download="PowerGridData_${regionInput.value}_${startDateInput.value}.json"> Download data of ${regionInput.value} - ${startDateInput.value}</a>`;
+      if (downloadableObj.length < 1) {
+        console.log("no data");
+        notificationDiv.innerHTML = `No data available for this time-frame and region`;
+      } else {
+        // prepare for downloading task
+        var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(downloadableObj, null, 2));
+        notificationDiv.innerHTML = `<a href="data:'${data}" download="FakePowerGridData_${regionInput.value}_${startDateInput.value}_${endDateInput.value}.json"> Download data of ${regionInput.value} from ${startDateInput.value} to ${endDateInput.value}</a>`;
+      }
     }
   }
 });
